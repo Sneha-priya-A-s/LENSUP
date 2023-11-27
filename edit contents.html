@@ -1,0 +1,28 @@
+{% extends 'Photographer/home_index.html' %}
+{% block body %}
+
+
+<body><form action="/myapp/Edit_Content_Post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered table-striped">
+  <tr>
+    <th>Title</th><input type="hidden" value="{{ data.id }}" name="id">
+    <td><input class="form-control" required type="text" value="{{ data.title }}" name="textfield" id="textfield" /></td>
+  </tr>
+  <tr>
+    <th>Photo</th>
+    <td><img src="{{ data.photo }}" height="80px" width="80px"><br>
+        <input type="file" class="form-control" name="fileField" id="fileField" /></td>
+  </tr>
+  <tr>
+    <th>Amount</th>
+    <td><input type="text" value="{{ data.amount }}" name="textfield2" class="form-control" id="textfield2" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" class="btn btn-success" value="Update" /></td>
+  </tr>
+</table>
+</form>
+</body>
+{% endblock %}

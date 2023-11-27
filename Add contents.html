@@ -1,0 +1,36 @@
+{% extends 'Photographer/home_index.html' %}
+{% block body %}
+
+
+<body><form action="/myapp/Add_contents_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table table-bordered table-striped">
+  <tr>
+    <th width="300">Title</th>
+    <td><input type="text" required class="form-control" name="textfield" id="textfield" /></td>
+  </tr>
+  <tr>
+    <th>Photo</th>
+    <td><input type="file" required class="form-control" title="Disclaimer"   name="fileField" id="fileField" />
+
+        <h6 style="color: red"><u>Disclaimer</u></h6><br> <span style="color: red"> Lens Up is a platform that allows users to upload and share their own photos. We do not own or control the copyright to any of the photos uploaded to Lens Up. The copyright to each photo remains with the photographer who uploaded it.
+
+We prohibit users from uploading photos that they do not own. If you find a photo on Lens Up that you believe is infringing on your copyright, please feedback us
+
+We will investigate any copyright infringement complaints and remove any photos that we find to be infringing on someone else copyright. We will also take appropriate action against any user who repeatedly infringes on copyright.
+
+Thank you for using Lens Up!</span>
+    </td>
+  </tr>
+  <tr>
+    <th>Amount</th>
+    <td><input type="text" class="form-control" required name="textfield2" id="textfield2" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" class="btn btn-success" id="button" value="Submit" /></td>
+  </tr>
+</table>
+</form>
+</body>
+{% endblock %}

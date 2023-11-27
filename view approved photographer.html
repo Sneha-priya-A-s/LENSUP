@@ -1,0 +1,45 @@
+{% extends 'Admin/home_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/Search_Approved_pg_post/#about">
+    {% csrf_token %}
+
+<table class="px fa-pull-left">
+  <tr>
+    <td><input type="text" required class="form-control" name="textfield" id="textfield" /></td>
+    <td>
+      <input type="submit" name="button" id="button" class="btn btn-success" value="Search" />
+    </td>
+  </tr>
+</table>
+    <table class="table table-bordered table-striped">
+  <tr>
+    <td>S/no</td>
+    <td>name</td>
+    <td>dob</td>
+    <td>gender</td>
+    <td>experiance</td>
+    <td>email</td>
+    <td>Phone</td>
+    <td>Address</td>
+  </tr>
+          {% for i in data %}
+
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td><img src="{{ i.photo }}" height="80px" width="80px"><br>{{ i.name }}</td>
+    <td>{{ i.dob }}</td>
+    <td>{{ i.gender }}</td>
+    <td>{{ i.experiance }}</td>
+    <td>{{ i.email }}</td>
+    <td>&nbsp;{{ i.phone }}</td>
+    <td>{{ i.place }}<br>{{i.pin}}<br>{{ i.district }}<br></td>
+  </tr>
+                {% endfor %}
+
+</table>
+
+</form>
+</body>
+{% endblock %}

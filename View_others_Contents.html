@@ -1,0 +1,26 @@
+{% extends 'Photographer/home_index.html' %}
+{% block body %}
+
+<body>
+<form action="/myapp/P_View_content_Post/#about" method="post">
+    <table class="table table-bordered table-striped">
+  <tr>
+    <th>S/no</th>
+    <th>Title</th>
+    <th>photo</th>
+    <th>Amount</th>
+      <th>Photographer info</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.title }}</td>
+    <td><img src="{{ i.photo }}" style="height: 40%; width: 40%"> </td>
+    <td>{{ i.amount }}</td>
+    <td>{{ i.PHOTOGRAPHER.name }}</td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

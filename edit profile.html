@@ -1,0 +1,65 @@
+{% extends 'Photographer/home_index.html' %}
+{% block body %}
+
+<body>
+<form action="/myapp/User_Edit_profile_post/" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+    <table class="table table-bordered table-striped">
+  <tr>
+    <th>Name</th>
+    <td><input type="text" class="form-control" required pattern="" value="{{ data.name }}" name="textfield" id="textfield" /></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><input type="email" class="form-control" required value="{{ data.email }}" name="textfield2" id="textfield2" /></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td><input type="text" value="{{ data.phone }}" class="form-control" required pattern="[6789][0-9]{9}" name="textfield3" id="textfield3" /></td>
+  </tr>
+  <tr>
+    <th>Gender</th>
+    <td><p>
+      <label>
+        <input type="radio" {% if data.gender == "Male" %}checked{% endif %} name="RadioGroup1" value="Male" id="RadioGroup1_0" />
+        Male</label>
+      <br />
+      <label>
+        <input type="radio" {% if data.gender == "Female" %}checked{% endif %} name="RadioGroup1" value="Female" id="RadioGroup1_1" />
+        Female</label>
+      <br />
+      <label>
+        <input type="radio" {% if data.gender == "Other" %}checked{% endif %} name="RadioGroup1" value="Other" id="RadioGroup1_2" />
+        Others</label>
+      <br />
+    </p></td>
+  </tr>
+  <tr>
+    <th>Dob</th>
+    <td><input type="date" value="{{ data.dob|date:'Y-m-d' }}" required class="form-control" name="textfield4" id="textfield4" /></td>
+  </tr>
+  <tr>
+    <th>Photo</th>
+    <td><img src="{{ data.photo }}" height="80px" width="80px"><br>
+        <input type="file" class="form-control" name="fileField" id="fileField" /></td>
+  </tr>
+  <tr>
+    <th>Place</th>
+    <td><input type="text" value="{{ data.place }}" class="form-control" required pattern="" name="textfield5" id="textfield5" /></td>
+  </tr>
+  <tr>
+    <th>District</th>
+    <td><input type="text" value="{{ data.district }}" required class="form-control" pattern="[a-zA-Z]+" name="textfield6" id="textfield6" /></td>
+  </tr>
+  <tr>
+    <th>Pin</th>
+    <td><input type="text" value="{{ data.pin }}" class="form-control" pattern="[6][0-9]{5}" required name="textfield7" id="textfield7" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button"class="btn btn-success" value="update" /></td>
+  </tr>
+</table>
+</form>
+</body>
+{% endblock %}

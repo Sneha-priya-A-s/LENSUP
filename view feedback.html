@@ -1,0 +1,37 @@
+{% extends 'User/home_index.html' %}
+{% block body %}
+
+<body>
+<form action="/myapp/u_view_feedback_post/" method="post">
+{% csrf_token %}
+    <table class="px fa-pull-left">
+  <tr>
+    <th>From Date</th>
+    <td><input type="date" class="form-control" required name="textfield" id="textfield" /></td>
+    <td>To Date</td>
+    <td><input type="date" class="form-control" required name="textfield2" id="textfield2" /></td>
+    <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>
+  </tr>
+</table>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>S/no</th>
+    <th>Date</th>
+{#    <td>type</td>#}
+    <th>Feedback</th>
+    <th></th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.date }}</td>
+    <td>{{ i.Feed_back }}</td>
+{#    <td>&nbsp;</td>#}
+    <td><a href="/myapp/p_delete_feedback/{{ i.id }}" onclick="return confirm('Are You Sure?')" class="btn btn-danger" >Delete</a> </td>
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+</body>
+{% endblock %}

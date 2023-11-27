@@ -1,0 +1,34 @@
+{% extends 'User/home_index.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/u_book_photographer_post/">
+    {% csrf_token %}
+  <table class="table table-bordered table-striped"><input type="hidden" value="{{ pid }}" name="id">
+    <tr>
+      <th>From  Date</th>
+      <td><input type="date" class="form-control" required name="textfield" id="textfield" /></td>
+    </tr>
+    <tr>
+      <th>To Date</th>
+      <td><input type="date" class="form-control" required name="textfield2" id="textfield2" /></td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td><textarea rows="7" class="form-control" required name="description" cols="12"></textarea></td>
+    </tr>
+      <tr>
+      <th>Category</th>
+      <td><select name="category" class="form-control"  >
+          {% for i in data %}
+          <option value="{{ i.id }}">{{ i.name }}</option>
+          {% endfor %}
+      </select> </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Submit" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

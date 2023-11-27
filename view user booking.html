@@ -1,0 +1,46 @@
+{% extends 'Photographer/home_index.html' %}
+{% block body %}
+
+
+<body>
+<form action="/myapp/photgrapher_View_user_Booking_post/" method="post">
+{% csrf_token %}
+<table class="px fa-pull-left">
+  <tr>
+    <th>From Date</th>
+    <td><input type="date" class="form-control" required name="textfield" id="textfield" /></td>
+    <th>To Date</th>
+    <td><input type="date" class="form-control" required name="textfield2" id="textfield2" /></td>
+    <td><input type="submit" name="button" class="btn btn-success" id="button" value="Search" /></td>
+  </tr>
+</table><table class="table table-bordered table-striped">
+  <tr>
+    <th>S/no</th>
+    <th>Date</th>
+    <th>User Info</th>
+    <th>From Date</th>
+    <th>To Date</th>
+    <th>Category</th>
+    <th>Description</th>
+{#    <td>status</td>#}
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.date }}</td>
+    <td>{{ i.USER.name }}<br>{{ i.USER.email }}</td>
+    <td>{{ i.from_d }}</td>
+    <td>{{ i.to_d }}</td>
+    <td>{{ i.CATEGORY.name }}</td>
+    <td>{{ i.description }}</td>
+    <td><a href="/myapp/p_approve_booking/{{ i.id }}" class="btn btn-info">Approve</a></td>
+    <td><a href="/myapp/p_reject_booking/{{ i.id }}" class="btn btn-danger">Reject</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+</body>
+{% endblock %}
